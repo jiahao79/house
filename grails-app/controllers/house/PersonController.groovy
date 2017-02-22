@@ -2,21 +2,22 @@ package house
 
 class PersonController {
 
-    def index() {
+   /* def index() {
         def persons = Person.list()
         [persons: persons]
-    }
-    def login(){
-    }
+    }*/
 
+    /*def login(){
+    }*/
+    //returns authentication data
     def results(){
-        String subId = params.ret
+        String subId = params.retId
         String[] list = subId.split(',')
-        [subs: list]
-        //render subId
+        redirect(action:'myHouse', controller:'house', params:params)
     }
 
-    def form() {
+
+    def createperson() {
     }
 
     def save() {

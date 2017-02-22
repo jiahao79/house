@@ -1,47 +1,47 @@
+
 <!doctype html>
+<html>
 <head>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="182214251148-klka0iqjht5m2bt5430q5mnk5aqtlusp.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="layout" content="main"/>
+    <title>Welcome To HouseMates</title>
+
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+<br/>
+<g:form controller="person" action="authenticate">
+    <label>First Name: </label>
+    <g:textField name="firstName"/><br/>
+    <label>Last Name: </label>
+    <g:textField name="lastName"/><br/>
+    <label>Sub_Id: </label>
+    <g:textField name="sub_id"/><br/>
+    <g:actionSubmit value="authenticate"/>
+</g:form>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>
-        var ret;
-        var email;
-        var name;
-        function onSignIn(googleUser) {
-            // The ID token you need to pass to your backend:
-            // Useful data for your client-side scripts:
-            var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            console.log('Full Name: ' + profile.getName());
-            console.log('Given Name: ' + profile.getGivenName());
-            console.log('Family Name: ' + profile.getFamilyName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
+<div id="content" role="main">
+    <section class="row colset-2-its">
+        <h1>This page simulates Login or Sign-Up Page</h1>
 
-            // The ID token you need to pass to your backend:
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-            ret = profile.getId();
-            email = profile.getEmail();
-            name = profile.getGivenName();
+        <p>
+            Congratulations, you have successfully started your first Grails application! At the moment
+            this is the default page, feel free to modify it to either redirect to a controller or display
+            whatever content you may choose. Below is a list of controllers that are currently deployed in
+            this application, click on each to execute its default action:
+        </p>
 
-
-        };
-        jQuery(function () {
-            jQuery("[name='jftForm']").submit(function () {
-                jQuery("[name='ret']").val([ret,email,name]);
-            });
-        })
-    </script>
-    <g:form name="jftForm" controller="person" action="results">
-        <g:hiddenField name="ret" value=""/>
-        <g:submitButton name="submit" value="Submit"/>
-    </g:form>
+        <div id="controllers" role="navigation">
+            <h2>Available Controllers:</h2>
+            <ul>
+                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                    <li class="controller">
+                        <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
+                    </li>
+                </g:each>
+            </ul>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>

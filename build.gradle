@@ -34,6 +34,7 @@ dependencyManagement {
 }
 
 dependencies {
+
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
@@ -54,6 +55,10 @@ dependencies {
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    //compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
+    //compile "org.grails.plugins:spring-security-core:3.0.3"
+    //compile ("org.grails.plugins:spring-security-oauth-google:0.3.1")
+
 
 
 }
@@ -67,3 +72,4 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+

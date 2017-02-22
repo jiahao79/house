@@ -18,7 +18,9 @@ class HouseController {
 
     //controller takes person to their house
     def myHouse(){
-        [message:getParams()]
+        String person = params.retId
+        String[] list = person.split(',')
+        [list:list]
     }
 
     def save(){
