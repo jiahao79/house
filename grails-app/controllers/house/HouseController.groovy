@@ -18,9 +18,8 @@ class HouseController {
 
     //controller takes person to their house
     def myHouse(){
-        String person = params.retId
-        String[] list = person.split(',')
-        [list:list]
+        def authItem = chainModel.object//params['object']
+        [persons:authItem]
     }
 
     def save(){

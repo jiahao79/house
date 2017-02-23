@@ -2,25 +2,29 @@ package house
 
 class PersonController {
 
-   /* def index() {
+    def index() {
         def persons = Person.list()
         [persons: persons]
-    }*/
+    }
 
-    /*def login(){
-    }*/
+    def login(){
+    }
     //returns authentication data
     def results(){
-        String subId = params.retId
-        String[] list = subId.split(',')
-        redirect(action:'myHouse', controller:'house', params:params)
+        if(params.retId != null) {
+            String subId = params.retId
+            String[] list = subId.split(',')
+            redirect(action: 'myHouse', controller: 'house', params: params)
+        }else{
+            redirect(action:'createperson')
+        }
     }
 
 
     def createperson() {
     }
 
-    def save() {
+    def saveperson() {
         def person = new Person(params)
 
         if(!person.save()){
@@ -47,31 +51,41 @@ class PersonController {
     }
 
     def authenticate() {
+        //get user google OAuth information
+        def auth = params.retId
+        //def authPerson = new Person(params)
+        String[] list = auth.split(',')
+        String authId = list[0]
 
-        def authPerson = new Person(params)
-        String id = authPerson.sub_id
         def person = Person.executeQuery(
                 "SELECT p.firstName, p.lastName, p.sub_id " +
-                        "FROM Person p " +
-                        "WHERE p.sub_id = ${id} ")
+                        "FROM Person p  " +
+                        "WHERE p.sub_id = '${authId}' ")
 
         if (person != null) {
 
             String[] p = person[0]
             if(p == null){
+                //person not in data base - go to house controller - index to create or join house
                 redirect (action: 'index', controller: 'house', params:[message:"Please Create or Join a House"])
-                return
+
             }
-            LinkedList<String> list = new LinkedList<String>()
-            for (int i = 0; i < p.length; i++) {
-                String z = p[i]
-                list.add(z)
-                if (z.equals(id)) {
-                    def subId = session[z]
-                    def LinkedList<String> map = list
-                    redirect (action: 'myHouse', controller: 'house', session)
-                    return
+            else{
+                //person exists in database
+                String[] retList = new String[3]
+                boolean flag = false
+                //store list of person details
+                for (int i = 0; i < p.length; i++) {
+                    String z = p[i]
+                    retList[i] = z
+                    if (z==authId) {
+                        flag = true
+                        //def subId = session[z]
+                     }
                 }
+               if(flag){
+                   chain(action:'myHouse', controller:'house', model:[object:retList])
+               }
             }
         }
     }

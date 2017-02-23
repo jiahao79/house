@@ -5,7 +5,7 @@
     <title>Create Person Form</title>
 </head>
 <body>
-<g:form controller="person" action="save">
+<g:form controller="person" action="saveperson">
     <label>First Name: </label>
     <g:textField name="firstName"/><br/>
     <label>Last Name: </label>

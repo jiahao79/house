@@ -17,8 +17,7 @@ class BootStrap {
         //Add 4 perons to house
 
         if (Person.count() == 0) {
-            new Person(firstName: 'Michael', lastName: 'Chang', sub_id: '111', houseId: '000').save()
-            new Person(firstName: 'Gary', lastName: 'Tohill', sub_id: '112', houseId: '000' ).save()
+            new Person(firstName: 'Gary', lastName: 'Tohill', sub_id:'107726694172578448865', houseId: '000' ).save()
             new Person(firstName: 'Rupi', lastName: 'Bains', sub_id: '113', houseId: '000').save()
             new Person(firstName: 'Mark', lastName: 'Johnson', sub_id: '114', houseId: '001').save()
             new Person(firstName: 'Waylan', lastName: 'Smithers', sub_id: '115', houseId: '001').save()

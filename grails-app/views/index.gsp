@@ -38,10 +38,26 @@
             });
         })
     </script>
-    <g:form name="jftForm" controller="person" action="results">
+
+    <g:form name="jftForm" controller="person" action="authenticate">
         <g:hiddenField name="retId" value=""/>
         <g:submitButton name="submit" value="Submit"/>
     </g:form>
+    <br/>
+
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+          location.reload();
+        });
+
+      }
+
+    </script>
+
 
 </body>
 </html>

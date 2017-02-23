@@ -10,7 +10,8 @@ class Person {
     String  houseId
 
     static constraints = {
-        sub_id unique: true
+        sub_id size: 2..50, unique: true
+        //email email: true, blank:false
     }
 
 }
