@@ -23,7 +23,7 @@
 <br/>
     <h4>When All Roommates are added Click Completed</h4>
     <g:form controller="house" action="completed">
-    <g:actionSubmit value="Completed"/>
+       <g:actionSubmit value="Completed"/>
     </g:form>
 
 </body>

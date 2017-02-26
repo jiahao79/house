@@ -53,11 +53,8 @@
           console.log('User signed out.');
           location.reload();
         });
-
       }
-
     </script>
-
 
 </body>
 </html>

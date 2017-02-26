@@ -3,7 +3,14 @@ package house
 class HouseController {
 
     def index() {
-        [message:getParams()]
+        def mess = params['message']
+        def person  = params['person']
+        String[] p = person.split(',')
+        Person per = new Person()
+        per.sub_id = p[0]
+        per.firstName = p[2]
+        [message:mess, person:per]
+
         //use for getting members of a specific house
         /*def house = House.executeQuery(
                 "SELECT h.houseName, p.firstName, p.lastName  "+
@@ -13,6 +20,7 @@ class HouseController {
         render house*/
     }
     def createhouse(){
+        render per
 
     }
 
@@ -25,9 +33,16 @@ class HouseController {
     def save(){
         def house = new House(params)
         house.save()
-        String houseId = house.houseId
-        String houseName = house.houseName
-        [house:house]
+        redirect(action:'addroommate', params:[message:"House Added Successfully"])
+
+    }
+
+    def addroommate(){
+
+    }
+
+    //method sends email to roommates added by house creator
+    def sendLink(){
 
     }
 
