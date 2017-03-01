@@ -10,7 +10,7 @@ class BootStrap {
 
         //Add person
 
-        Person testPerson = new Person(firstName: 'Gary', lastName: 'Tohill', sub_id:'107726694172578448865', houseId: '000' ).save()
+        Person testPerson = new Person(firstName:'Gary', lastName:'Tohill', subId:'107726694172578448865', email:'johnhend1974@gmail.com').save()
         /*new Person(firstName: 'Rupi', lastName: 'Bains', sub_id: '113', houseId: '000').save()
         new Person(firstName: 'Mark', lastName: 'Johnson', sub_id: '114', houseId: '001').save()
         new Person(firstName: 'Waylan', lastName: 'Smithers', sub_id: '115', houseId: '001').save()
@@ -21,7 +21,7 @@ class BootStrap {
 
 
         //add house and person to PersonHouse table
-        PersonHouse testPersonHouse = new PersonHouse(personId: testPerson.sub_id, houseId:testHouse.houseId).save()
+        PersonHouse testPersonHouse = new PersonHouse(personId: testPerson.subId, houseId:testHouse.houseId).save()
 
     }
 

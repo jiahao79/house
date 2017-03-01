@@ -10,17 +10,22 @@
     <h2>Add Roommates</h2>
     <br/>
     <br/><br/>
-    <h4>Our Database told us you are not yet registered...Please Create A House, then add your roommates</h4>
-    <br/>
-    <<g:form controller="house" action="sendLink">
-        <label>Person Name: </label>
-        <g:textField name="emailName"/><br/>
-        <label>Email Address: </label>
-        <g:textField name="emailAddres"/><br/>
-        <g:textField name="text"/><br/>
-        <g:actionSubmit value="Save"/>
-    </g:form>
 
+    <h4>Please add your HouseMates in the form below</h4>
+    <br/>
+
+    <div>
+        <g:form controller="house" action="sendLink">
+            <label>Person Name: </label>
+            <g:textField name="emailName"/><br/>
+            <label>Email Address: </label>
+            <g:textField name="emailAddres"/><br/>
+            <label>Message</label>
+            <g:textArea name="text" />
+            <br/>
+            <g:actionSubmit value="Send"/>
+        </g:form>
+    </div>
 </div>
 </body>
 </html>

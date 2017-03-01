@@ -2,16 +2,18 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Persons</title>
+    <title>Persons in Person Database</title>
 </head>
 <body>
-<g:each in="${persons}" var="person" status="i">
-    <h3>${i+1}. ${person.lastName}, ${person.firstName}</h3>
-    <p>
-        sub_ID: ${person.sub_id}, houseId: ${person.houseId}
-    </p>
-    <br/>
-</g:each>
+<div>
+    <g:each in="${person}" var="per" status="i">
+        <h3>${i+1}. ${per.lastName}, ${per.firstName}</h3>
+        <p>
+            sub_ID: ${per.subId}, email: ${per.email}
+        </p>
+        <br/>
+    </g:each>
+</div>
 </body>
 
 

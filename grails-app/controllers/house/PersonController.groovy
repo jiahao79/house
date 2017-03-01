@@ -1,14 +1,12 @@
 package house
 
 class PersonController {
-
+    //list persons in Person database
     def index() {
         def persons = Person.list()
-        [persons: persons]
+        [person: persons]
     }
 
-    def login() {
-    }
     //returns authentication data
     def results() {
         if (params.retId != null) {
@@ -20,16 +18,35 @@ class PersonController {
         }
     }
 
-
+    //create new person based on google Id
     def createperson() {
-    }
+        def googleProfile = params.googleProfile
+        if(!googleProfile.equals(',,,')) {
+            String[] p = googleProfile.split(',')
+            session['firstName'] = p[0]
+            session['lastName'] = p[1]
+            session['subId'] = p[2]
+            session['email'] = p[3]
 
+            [person: session]
+        }else{
+            def message ="IMPORTANT You need to log into google to access this app"
+            redirect (uri:'/', params:[message:"IMPORTANT You need to log into google to access this app"])
+        }
+
+    }
+    //save new Person based on google Id
     def saveperson() {
         def person = new Person(params)
+        def list = Person.list()
 
-        if (!person.save()) {
-            session['user'] = person.sub_id
-            def person1 = Person.executeQuery(
+        if (person.subId in list.subId) {
+            render "Person is in the database"
+        } else {
+            person.save()           //add person to Person Table
+            session['subId'] = person.subId
+            redirect(action: 'createhouse', controller: 'house')
+            /*def person1 = Person.executeQuery(
                     "SELECT p.firstName, p.lastName, p.sub_id " +
                             "FROM Person p " +
                             "WHERE p.sub_id = ${person.sub_id} ")
@@ -39,15 +56,10 @@ class PersonController {
                 String z = p[i]
                 list.add(z)
             }
-
-            [lists: list]
-
-        } else {
-            render "does not exist"
+            [lists: list]*/
         }
-        /*String houseId = person.houseId
-        render(view: 'save.gsp', controller: 'house')*/
     }
+
 
     def authenticate() {
         //get user google OAuth information
@@ -57,9 +69,9 @@ class PersonController {
             String[] list = auth.split(',')
             String authId = list[0]
             def person = Person.executeQuery(
-                    "SELECT p.firstName, p.lastName, p.sub_id " +
+                    "SELECT p.firstName, p.lastName, p.subId " +
                             "FROM Person p  " +
-                            "WHERE p.sub_id = '${authId}' ")
+                            "WHERE p.subId = '${authId}' ")
 
             String[] p = person[0]
 
@@ -70,27 +82,13 @@ class PersonController {
             } else {
                 chain(action: 'myHouse', controller: 'house', model: [object: p])
 
-                //person exists in database
-                /*String[] retList = new String[3]
-                boolean flag = false
-                //store list of person details
-                for (int i = 0; i < p.length; i++) {
-                    String z = p[i]
-                    retList[i] = z
-                    if (z == authId) {
-                        flag = true
-                        //def subId = session[z]
-                    }
                 }
-                if (flag) {
-                    chain(action: 'myHouse', controller: 'house', model: [object: retList])
-                }*/
             }
-        }
-        catch (Exception ex) {
+            catch (Exception ex) {
             render "You are not signed into your Google Account. Please sign-in to google to proceed"
         }
     }
+
 }
 
 

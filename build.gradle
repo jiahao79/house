@@ -35,6 +35,9 @@ dependencyManagement {
 
 dependencies {
 
+    //email plugin
+    compile "org.grails.plugins:mail:2.0.0.RC6"
+    //standard plugins
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"

@@ -8,5 +8,10 @@ class House {
     String houseName
     String houseId
     //LinkedList<Person> list
+    static contstraints ={
+        houseName size:2..10, blank: false
+        houseId blank:false
+
+    }
 
 }

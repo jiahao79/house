@@ -5,12 +5,21 @@
     <title>Create House Form</title>
 </head>
 <body>
-<g:form controller="house" action="save">
-    <label>House Name: </label>
-    <g:textField name="houseName"/><br/>
-    <label>House Id: </label>
-    <g:textField name="houseId"/><br/>
-    <g:actionSubmit value="Save"/>
-</g:form>
+    <div>
+        <h2>Please Enter You House Name</h2>
+        <p>After you have entered your house name, please save.</p>
+        <p>On the next page you will be asked to add your HouseMates</p>
+        <p>Please have their email address ready.</p>
+        <br/>
+    </div>
+    <div>
+        <g:form controller="house" action="save">
+            <label>House Name: </label>
+            <g:textField name="houseName"/><br/>
+            <label>Your House Id is: </label>
+            <g:textField name="houseId" value="${idNumber}" disabled="false"/><br/>
+            <g:actionSubmit value="Save"/>
+        </g:form>
+    </div>
 </body>
 </html>

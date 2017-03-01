@@ -6,11 +6,11 @@ class Person {
 
     String  firstName
     String  lastName
-    String  sub_id
-    String  houseId
+    String  subId
+    String  email
 
     static constraints = {
-        sub_id size: 2..50, unique: true
+        subId size: 2..50, unique: true
         //email email: true, blank:false
     }
 
