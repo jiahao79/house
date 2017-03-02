@@ -19,9 +19,11 @@
             <label>Last Name: </label>
             <g:textField name="lastName" value="${person['lastName']}"/><br/>
             <label>Sub_Id: </label>
-            <g:textField name="subId" value="${person['subId']}"/><br/>
-            <lable>email: </lable>
-            <g:textField name="email" value="${person['email']}"/><br/>
+            <g:textField name="subId" value="${person['subId']}" disabled="true"/>
+            <g:hiddenField name="subId" value="${person['subId']}"/><br/>
+            <lablel>email: </lablel>
+            <g:textField name="email" value="${person['email']}" disabled="true"/>
+            <g:hiddenField name="email" value="${person['email']}"/><br/>
             <g:actionSubmit controller='house' action='saveform' value="Create"/>
         </g:form>
     </div>
