@@ -17,19 +17,23 @@
             <h2>Email Sender Form</h2>
             <g:form controller="emailSender" action="send">
                 <div class="fieldcontain">
-                    <g:textField name="address" placeholder="youremail@djamware.com" required="" />
+                    <g:textField name="address" placeholder="roommates-email@email.com" required="" />
                 </div>
                 <div class="fieldcontain">
                     <g:textField name="subject" placeholder="Your Subject" required="" />
                 </div>
                 <div class="fieldcontain">
-                    <g:textArea name="body" rows="5" cols="80" placeholder="Your message" required="" />
+                    <g:textArea name="body" rows="5" cols="100" placeholder="Your message" required="" >
+                        ${email} </g:textArea>
                 </div>
                 <fieldset>
                     <g:submitButton name="send" value="Send" />
                 </fieldset>
             </g:form>
         </section>
+    </div>
+    <div>
+
     </div>
     <div>
         <h4>If you have entered all your HouseMates, please click finish and login to your new House!</h4>
