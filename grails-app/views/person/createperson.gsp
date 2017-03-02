@@ -24,7 +24,8 @@
                 <g:textField name="subId" value="${person['subId']}" disabled="true"/>
                 <g:hiddenField name="subId" value="${person['subId']}"/><br/>
                 <lable>email: </lable>
-                <g:textField name="email" value="${person['email']}"/><br/>
+                <g:textField name="email" value="${person['email']}" disabled="true"/>
+                <g:hiddenField name="email" value="${person['email']}"/><br/>
                 <g:actionSubmit controller='person' action='saveperson' value="Create"/>
             </g:form>
         </div>
