@@ -153,6 +153,7 @@ class HouseController {
         def person = new Person(firstName:firstName, lastName:lastName, subId:subId, email:email).save()
         //add person and house id to personHouse table
         def personHouse = new PersonHouse(personId:subId, houseId:houseId).save()
+        session.invalidate()
         redirect(uri:'/', params:[message:"Thank you for joining HouseMates! Please login below."])
     }
     //----block ends
